@@ -1,6 +1,6 @@
 # hangtime.rb
 
-words = ["ruby", "terminal", "syntax", "developer", "framework"]
+words = ["ruby", "terminal", "syntax", "rails", "framework"]
 secret_word = words.sample
 correct_letters = []
 lives = 6
@@ -17,15 +17,15 @@ while lives > 0
 
     if secret_word.include?(guess)
         correct_letters << guess unless correct_letters.include?(guess)
-        puts "✅ Good guess!"
+        puts "Good guess!"
     else
         lives -= 1
-        puts "❌ Wrong! Lives left: #{lives}"
+        puts "Wrong! Lives left: #{lives}"
     end
 end
 
 if lives > 0
-    puts "\n🎉 You won! The word was '#{secret_word}'."
+    puts "\nYou won! The word was '#{secret_word}'."
 else
-    puts "\n💀 Game over. The word was '#{secret_word}'."
+    puts "\nGame over. The word was '#{secret_word}'."
 end

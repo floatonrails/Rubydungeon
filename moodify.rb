@@ -124,7 +124,7 @@ MOOD_PLAYLISTS = {
 
 # Show all available moods
 def list_moods
-    puts "\n🧠 Available Moods:"
+    puts "Available Moods:"
     MOOD_PLAYLISTS.each_key.with_index(1) do |mood, i|
         puts "#{i}. #{mood.capitalize}"
     end
@@ -142,7 +142,7 @@ def show_playlist(mood)
 end
 
 # Moodify App Loop
-puts "🎧 Moodify CLI – Your Mood, Your Music"
+puts "Moodify CLI – Your Mood, Your Music"
 list_moods
 
 print "\n🗣️ How are you feeling today? > "
@@ -151,5 +151,5 @@ chosen_mood = gets.chomp.downcase
 if MOOD_PLAYLISTS.key?(chosen_mood)
     show_playlist(chosen_mood)
 else
-    puts "😞 Sorry, no playlist for that mood yet."
+    puts "Sorry, no playlist for that mood yet."
 end

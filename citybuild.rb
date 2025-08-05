@@ -160,7 +160,7 @@ class CityBuilder
 
     def display_header
         puts Colors::CYAN + "="*60 + Colors::RESET
-        puts Colors::YELLOW + "          🏙️  ASCII CITY BUILDER  🏙️          " + Colors::RESET
+        puts Colors::YELLOW + "          CITYBUILD         " + Colors::RESET
         puts Colors::CYAN + "="*60 + Colors::RESET
         puts
         puts Colors::WHITE + "Money: $#{@city_stats[:money]} | " +
@@ -172,14 +172,14 @@ class CityBuilder
 
     def display_menu
         puts Colors::GREEN + "Choose a category to build:" + Colors::RESET
-        puts "1. 🏠 Residential (Cost: $#{@building_costs[:residential]})"
-        puts "2. 🏢 Commercial (Cost: $#{@building_costs[:commercial]})"
-        puts "3. 🗽 Landmarks (Cost: $#{@building_costs[:landmarks]})"
-        puts "4. 🛣️  Infrastructure (Cost: $#{@building_costs[:infrastructure]})"
-        puts "5. 🎯 Auto-build random city"
-        puts "6. 👁️  View current city"
-        puts "7. 📊 Show city stats"
-        puts "8. 🚪 Exit"
+        puts "1. Residential (Cost: $#{@building_costs[:residential]})"
+        puts "2. Commercial (Cost: $#{@building_costs[:commercial]})"
+        puts "3. Landmarks (Cost: $#{@building_costs[:landmarks]})"
+        puts "4. Infrastructure (Cost: $#{@building_costs[:infrastructure]})"
+        puts "5. Auto-build random city"
+        puts "6. View current city"
+        puts "7. Show city stats"
+        puts "8. Exit"
         puts
         print "Enter your choice (1-8): "
     end
@@ -189,7 +189,7 @@ class CityBuilder
         ASCII_STRUCTURES[category].each_with_index do |(name, _), index|
             puts "#{index + 1}. #{name.to_s.gsub('_', ' ').split.map(&:capitalize).join(' ')}"
         end
-        puts "0. Back to main menu"
+        puts "0. Get back to main menu"
         puts
         print "Choose a structure: "
     end
@@ -198,7 +198,7 @@ class CityBuilder
         cost = @building_costs[category]
 
         if @city_stats[:money] < cost
-            puts Colors::RED + "❌ Not enough money! Need $#{cost}, have $#{@city_stats[:money]}" + Colors::RESET
+            puts Colors::RED + "There's' not enough money! You need atleast $#{cost}, have $#{@city_stats[:money]}" + Colors::RESET
             sleep(2)
             return
         end
@@ -206,8 +206,8 @@ class CityBuilder
         @city_stats[:money] -= cost
         @city_stats[:buildings] += 1
 
-        puts Colors::GREEN + "\n🔨 Building: #{name.to_s.gsub('_', ' ').split.map(&:capitalize).join(' ')}" + Colors::RESET
-        puts Colors::YELLOW + "💰 Cost: $#{cost}" + Colors::RESET
+        puts Colors::GREEN + "Building: #{name.to_s.gsub('_', ' ').split.map(&:capitalize).join(' ')}" + Colors::RESET
+        puts Colors::YELLOW + "Cost: $#{cost}" + Colors::RESET
         puts
 
         built = []
@@ -283,11 +283,11 @@ class CityBuilder
 
     def display_city
         if @city_parts.empty?
-            puts Colors::RED + "🏜️  Your city is empty! Build something first." + Colors::RESET
+            puts Colors::RED + "Your city is empty! Build something first." + Colors::RESET
             return
         end
 
-        puts Colors::CYAN + "\n🏙️  YOUR MAGNIFICENT CITY:" + Colors::RESET
+        puts Colors::CYAN + "YOUR MAGNIFICENT CITY:" + Colors::RESET
         puts Colors::CYAN + "=" * 80 + Colors::RESET
 
         final_art = combine_structures(@city_parts)
@@ -296,11 +296,11 @@ class CityBuilder
         end
 
         puts Colors::CYAN + "=" * 80 + Colors::RESET
-        puts Colors::GREEN + "🎉 City completed with #{@city_stats[:buildings]} buildings!" + Colors::RESET
+        puts Colors::GREEN + "City completed with #{@city_stats[:buildings]} buildings!" + Colors::RESET
     end
 
     def auto_build_city
-        puts Colors::YELLOW + "\n🤖 Auto-building a random city..." + Colors::RESET
+        puts Colors::YELLOW + "Auto-building a random city..." + Colors::RESET
 
         # Build 3-8 random structures
         num_buildings = rand(3..8)
@@ -312,32 +312,32 @@ class CityBuilder
             structure_name = ASCII_STRUCTURES[category].keys.sample
             art = ASCII_STRUCTURES[category][structure_name]
 
-            puts Colors::BLUE + "\n🏗️  Auto-building #{i + 1}/#{num_buildings}..." + Colors::RESET
+            puts Colors::BLUE + "Auto-building #{i + 1}/#{num_buildings}..." + Colors::RESET
             build_structure(structure_name, art, category)
             sleep(0.5)
         end
 
-        puts Colors::GREEN + "\n🎊 Auto-build complete!" + Colors::RESET
+        puts Colors::GREEN + "Auto-build complete!" + Colors::RESET
     end
 
     def display_stats
-        puts Colors::CYAN + "\n📊 CITY STATISTICS:" + Colors::RESET
+        puts Colors::CYAN + "CITY STATISTICS:" + Colors::RESET
         puts Colors::CYAN + "=" * 30 + Colors::RESET
-        puts Colors::WHITE + "💰 Money: $#{@city_stats[:money]}" + Colors::RESET
-        puts Colors::WHITE + "👥 Population: #{@city_stats[:population]}" + Colors::RESET
-        puts Colors::WHITE + "😊 Happiness: #{@city_stats[:happiness]}%" + Colors::RESET
-        puts Colors::WHITE + "🏗️  Buildings: #{@city_stats[:buildings]}" + Colors::RESET
+        puts Colors::WHITE + "Money: $#{@city_stats[:money]}" + Colors::RESET
+        puts Colors::WHITE + "Population: #{@city_stats[:population]}" + Colors::RESET
+        puts Colors::WHITE + "Happiness: #{@city_stats[:happiness]}%" + Colors::RESET
+        puts Colors::WHITE + "Buildings: #{@city_stats[:buildings]}" + Colors::RESET
         puts Colors::CYAN + "=" * 30 + Colors::RESET
 
         # City rating
         if @city_stats[:happiness] >= 80
-            puts Colors::GREEN + "🌟 City Rating: EXCELLENT!" + Colors::RESET
+            puts Colors::GREEN + "City Rating: EXCELLENT!" + Colors::RESET
         elsif @city_stats[:happiness] >= 60
-            puts Colors::YELLOW + "⭐ City Rating: Good" + Colors::RESET
+            puts Colors::YELLOW + "City Rating: Good" + Colors::RESET
         elsif @city_stats[:happiness] >= 40
-            puts Colors::YELLOW + "⚠️  City Rating: Average" + Colors::RESET
+            puts Colors::YELLOW + "City Rating: Average" + Colors::RESET
         else
-            puts Colors::RED + "💀 City Rating: Poor" + Colors::RESET
+            puts Colors::RED + "City Rating: Poor" + Colors::RESET
         end
     end
 
@@ -372,7 +372,7 @@ class CityBuilder
                     puts "\nPress Enter to continue..."
                     gets
                 else
-                    puts Colors::RED + "❌ Invalid choice!" + Colors::RESET
+                    puts Colors::RED + "Invalid choice!" + Colors::RESET
                     sleep(1)
                 end
 
@@ -398,14 +398,14 @@ class CityBuilder
                 gets
 
             when 8
-                puts Colors::GREEN + "\n👋 Thanks for playing ASCII City Builder!" + Colors::RESET
-                puts Colors::YELLOW + "🏙️  Final city stats:" + Colors::RESET
+                puts Colors::GREEN + "Thanks for playing Citybuild Builder!" + Colors::RESET
+                puts Colors::YELLOW + "Final city stats:" + Colors::RESET
                 display_stats
                 display_city if @city_stats[:buildings] > 0
                 break
 
             else
-                puts Colors::RED + "❌ Invalid choice! Please enter 1-8." + Colors::RESET
+                puts Colors::RED + "Invalid choice! Please enter 1-8." + Colors::RESET
                 sleep(1)
             end
         end
@@ -414,8 +414,8 @@ end
 
 # Run the game
 if __FILE__ == $0
-    puts Colors::CYAN + "\n🎮 Welcome to ASCII City Builder!" + Colors::RESET
-    puts Colors::WHITE + "Build your dream city one structure at a time!" + Colors::RESET
+    puts Colors::CYAN + "\nWelcome to Citybuild, a Sim City-like CLI game!" + Colors::RESET
+    puts Colors::WHITE + "Build your largest city, one structure at a time or many!" + Colors::RESET
     puts "\nPress Enter to start..."
     gets
 

@@ -127,8 +127,8 @@ class GrimPrompt
     def self.display_header
         puts COLORS[:magenta] + COLORS[:bold]
         puts "╔══════════════════════════════════════════════════════════════════════════════╗"
-        puts "║                            THE GRIM PROMPT                                  ║"
-        puts "║                        Oracle of Code & Wisdom                             ║"
+        puts "║                            THE GRIM BOT                                  ║"
+        puts "║                        Oracle of Coding & Wisdom                             ║"
         puts "╚══════════════════════════════════════════════════════════════════════════════╝"
         puts COLORS[:reset]
     end
@@ -205,7 +205,7 @@ class GrimPrompt
         sleep 0.5
 
         spell = SPELLS.sample
-        puts COLORS[:bold] + "✨ Mystical Command: " + COLORS[:reset]
+        puts COLORS[:bold] + "Mystical Command: " + COLORS[:reset]
         puts COLORS[:yellow] + "   " + spell + COLORS[:reset]
 
         puts COLORS[:dim] + COLORS[:green] + "\n[The spell is cast... use wisely]\n" + COLORS[:reset]
@@ -215,12 +215,12 @@ class GrimPrompt
         puts COLORS[:red] + "\n[Initiating the Ancient Debugging Ritual...]\n" + COLORS[:reset]
 
         ritual_steps = [
-            "🕯️  Light the candles of printf debugging",
-            "📜 Recite the sacred stack trace",
-            "🔍 Examine the entrails of your log files",
-            "💭 Meditate on the last working commit",
-            "🏃 Run the tests of enlightenment",
-            "🙏 Pray to the God of Edge Cases"
+            "Light the candles of print debugging",
+            "Recite the sacred stack overflow",
+            "Examine the entry of your log files",
+            "Meditate on the last working commit",
+            "Run the tests of code",
+            "Pray to the God of CD/CI"
         ]
 
         ritual_steps.each do |step|
@@ -228,7 +228,7 @@ class GrimPrompt
             sleep 0.8
         end
 
-        puts COLORS[:green] + "\n✨ The ritual is complete! Your bugs tremble in fear.\n" + COLORS[:reset]
+        puts COLORS[:green] + "\nThe ritual is complete! Your bugs and terminal tremble in fear.\n" + COLORS[:reset]
     end
 
     def self.show_prompt

@@ -51,10 +51,10 @@ class RPGGame
   def display_status
     puts colorize("━" * 50, :system)
     puts colorize("#{@player[:name]} - Nível #{@player[:level]}", :player)
-    puts colorize("❤️  Vida: #{@player[:health]}/#{@player[:max_health]} | " +
-                  "✨ Mana: #{@player[:mana]}/#{@player[:max_mana]} | " +
-                  "💰 Ouro: #{@player[:gold]}", :system)
-    puts colorize("⚔️  Arma: #{@player[:equipped_weapon]}", :system)
+    puts colorize("Vida: #{@player[:health]}/#{@player[:max_health]} | " +
+                  "Mana: #{@player[:mana]}/#{@player[:max_mana]} | " +
+                  "Ouro: #{@player[:gold]}", :system)
+    puts colorize("Arma: #{@player[:equipped_weapon]}", :system)
     puts colorize("━" * 50, :system)
     puts
   end
@@ -94,15 +94,15 @@ class RPGGame
   end
 
   def combat(enemy_name, enemy_health, enemy_damage, experience_reward = 25)
-    puts colorize("⚔️  COMBATE INICIADO! ⚔️", :enemy)
+    puts colorize("⚔️  COMBATE INICIADO!", :enemy)
     puts colorize("Você enfrenta: #{enemy_name}", :enemy)
     puts
 
     enemy_max_health = enemy_health
 
     while enemy_health > 0 && @player[:health] > 0
-      puts colorize("#{enemy_name}: #{enemy_health}/#{enemy_max_health} ❤️", :enemy)
-      puts colorize("#{@player[:name]}: #{@player[:health]}/#{@player[:max_health]} ❤️", :player)
+      puts colorize("#{enemy_name}: #{enemy_health}/#{enemy_max_health}", :enemy)
+      puts colorize("#{@player[:name]}: #{@player[:health]}/#{@player[:max_health]}", :player)
       puts
 
       options = ["Atacar", "Usar Poção de Vida", "Tentar Fugir"]
@@ -503,7 +503,7 @@ class RPGGame
 
     # Boss Fight
     if combat("Senhor das Trevas", 150, 25, 100)
-      puts colorize("🏆 VITÓRIA ÉPICA! 🏆", :system)
+      puts colorize("VITÓRIA ÉPICA!", :system)
       puts
       narrate("O Senhor das Trevas é derrotado! Sua armadura se desfaz em fumaça.")
       narrate("O Cristal Perdido brilha intensamente e flutua em sua direção.")
@@ -519,7 +519,7 @@ class RPGGame
 
       chapter_epilogue
     else
-      puts colorize("💀 DERROTA... 💀", :enemy)
+      puts colorize("DERROTA...", :enemy)
       puts
       narrate("O Senhor das Trevas ri enquanto as trevas consomem o reino...")
       narrate("Mas talvez outro herói surja para continuar sua missão...")
@@ -549,7 +549,7 @@ class RPGGame
     end
 
     puts
-    puts colorize("🌟 FINAL CONQUISTADO! 🌟", :system)
+    puts colorize("FINAL CONQUISTADO!", :system)
     puts
     puts colorize("Estatísticas Finais:", :system)
     puts colorize("━" * 30, :system)
@@ -564,7 +564,7 @@ class RPGGame
     narrate("Sua jornada heroica chegou ao fim... ou seria apenas o começo?")
 
     puts
-    puts colorize("🎮 FIM DE JOGO 🎮", :system)
+    puts colorize("FIM DE JOGO", :system)
   end
 
   def play
